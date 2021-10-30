@@ -2,6 +2,7 @@
 #include "twinkleIntensityFrame.h"
 #include "colourBrightnessModifier.h"
 #include "nutcrackerPattern.h"
+#include "harkTheHerald.h"
 
 void setup() {
   CircuitPlayground.begin();
@@ -11,11 +12,16 @@ void setup() {
 
 void loop() {
 
-  // (1) Cool white twinkle
-  int twinkleMinMaxHoldFrames = 200;
-  int twinkleHighestNumberedFrame = highestNumberedFrame(twinkleMinMaxHoldFrames);
+  // Generate twinkle LED offsets and set twinkle constants for this loop
+  const int twinkleMinMaxHoldFrames = 200;
+  const int twinkleHighestNumberedFrame = highestNumberedFrame(twinkleMinMaxHoldFrames);
   // Generate a random offset starting frame for each LED
-  int offsets[10] = {random(300), random(300), random(300), random(300), random(300), random(300), random(300), random(300), random(300), random(300)};
+  int offsets[10] = {};
+  for (int i = 0; i <= 9; i++) {
+    offsets[i] = random(0, 500);
+  }
+
+  // (1) Cool white twinkle
   // For each frame of animation (1)
   for (int i = 0; i <= 3000; i++) {
     // For each LED
@@ -56,10 +62,5 @@ void loop() {
 
   // (2) Nutcracker flash (r/g/w)
   doNutcrackerFlash();
-  
-}
 
-// if switch on
-// either button interrupt
-// sugarcane lights
-// play christmas song
+}
