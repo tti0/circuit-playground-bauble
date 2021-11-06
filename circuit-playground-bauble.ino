@@ -7,7 +7,7 @@
 void setup() {
   CircuitPlayground.begin();
   CircuitPlayground.clearPixels();
-  CircuitPlayground.setBrightness(45);
+  CircuitPlayground.setBrightness(35);
 }
 
 void loop() {
@@ -62,5 +62,17 @@ void loop() {
 
   // (2) Nutcracker flash (r/g/w)
   doNutcrackerFlash();
+
+  // if switch on, play music on this loop
+  bool slideSwitch = CircuitPlayground.slideSwitch();
+  if (slideSwitch) {
+    for(int i = 0; i <= 9; i++) {
+      CircuitPlayground.setPixelColor(i, 0, 255, 255);
+    }
+    doHarkTheHerald();
+
+    // (2) Nutcracker flash (r/g/w)
+    doNutcrackerFlash();
+  }
 
 }
