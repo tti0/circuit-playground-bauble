@@ -3,7 +3,7 @@ const unsigned long green = 0x32FF00;
 const unsigned long white = 0xFFFFFF;
 
 void doNutcrackerFlash() {
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < 5; i++) {
     CircuitPlayground.clearPixels();
     CircuitPlayground.setPixelColor(0, red);
     CircuitPlayground.setPixelColor(1, green);
